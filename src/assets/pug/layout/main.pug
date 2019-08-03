@@ -11,11 +11,13 @@ html(lang='ru')
     title #{title}
     block head
 
-  body(class=pageClass)
+  body()
     .wrapper
-      include ../includes/modules/header
-      .content-wrapper
-        block content
+      #app
+        include ../includes/modules/header
+        .content-wrapper
+          include ../includes/modules/content
       include ../includes/modules/footer
+
 
     block script

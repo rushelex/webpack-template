@@ -2,6 +2,7 @@
 @import "utils/vars";
 @import "utils/mixins";
 @import "utils/fonts";
+@import "utils/reset";
 
 html {
   line-height: $mainLineHeight;
@@ -111,6 +112,5 @@ section,
 
 // Modules
 @import "modules/header";
-@import "modules/wrapper";
+@import "modules/content";
 @import "modules/footer";
-@import "utils/reset";
