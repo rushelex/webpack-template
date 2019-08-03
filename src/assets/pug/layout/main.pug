@@ -11,13 +11,12 @@ html(lang='ru')
     title #{title}
     block head
 
-  body()
+  body
     .wrapper
-      #app
-        include ../includes/modules/header
-        .content-wrapper
-          include ../includes/modules/content
-      include ../includes/modules/footer
+      include ../includes/blocks/header
+      .content-wrapper
+        include ../includes/blocks/content
+    include ../includes/blocks/footer
 
 
     block script

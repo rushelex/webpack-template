@@ -5,4 +5,4 @@ import './assets/js/common'
 // import './assets/css/main.css'
 
 // SCSS
-import './assets/scss/main.scss'
+import './assets/styl/main.styl'

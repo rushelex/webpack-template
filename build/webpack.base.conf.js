@@ -44,7 +44,7 @@ module.exports = {
         name: '[name].[ext]'
       }
     }, {
-      test: /\.scss$/,
+      test: /\.styl$/,
       use: [
         'style-loader',
         MiniCssExtractPlugin.loader,
@@ -57,7 +57,7 @@ module.exports = {
           options: { sourceMap: true, config: { path: './postcss.config.js' } }
         },
         {
-          loader: 'sass-loader',
+          loader: 'stylus-loader',
           options: { sourceMap: true }
         }
       ]

@@ -1,0 +1,21 @@
+// px to rem
+rem($pixels, $context = $mainFontSize)
+  if unitless($pixels)
+    $pixels = $pixels * 1px
+  if unitless($context)
+    $context = $context * 1px
+  $pixels / $context * 1rem
+
+size($width, $height = $width)
+  width: $width
+  height: $height
+  
+placeholder()
+  ::-webkit-input-placeholder
+    {block}
+  :-moz-placeholder
+    {block}
+  ::-moz-placeholder
+    {block}
+  :-ms-input-placeholder
+    {block}
