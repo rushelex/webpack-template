@@ -12,7 +12,7 @@ const PATHS = {
 }
 
 // Pages const for HtmlWebpackPlugin
-const PAGES_DIR = `${PATHS.src}/${PATHS.assets}pug/pages/`
+const PAGES_DIR = `${PATHS.src}/${PATHS.assets}includes/pages/`
 const PAGES = fs.readdirSync(PAGES_DIR).filter(fileName => fileName.endsWith('.pug'))
 
 module.exports = {
@@ -25,7 +25,7 @@ module.exports = {
     // module: `${PATHS.src}/your-module.js`,
   },
   output: {
-    filename: `${PATHS.assets}js/[name].js`,
+    filename: `${PATHS.assets}js/[name].[hash].js`,
     path: PATHS.dist,
     publicPath: '/'
   },
@@ -37,6 +37,12 @@ module.exports = {
       test: /\.js$/,
       loader: 'babel-loader',
       exclude: '/node_modules'
+    }, {
+      test: /\.(woff(2)?|ttf|eot|svg)(\?v=\d+\.\d+\.\d+)?$/,
+      loader: 'file-loader',
+      options: {
+        name: '[name].[ext]'
+      }
     }, {
       test: /\.(png|jpg|gif|svg)$/,
       loader: 'file-loader',
@@ -79,7 +85,7 @@ module.exports = {
   },
   plugins: [
     new MiniCssExtractPlugin({
-      filename: `${PATHS.assets}css/[name].css`,
+      filename: `${PATHS.assets}css/[name].[hash].css`,
     }),
     new CopyWebpackPlugin([
       { from: `${PATHS.src}/${PATHS.assets}img`, to: `${PATHS.assets}img` },
