@@ -1,8 +1,8 @@
 // JS
-import './assets/includes/layout/main'
+import './assets/includes/main'
 
-// SCSS
-import './assets/includes/layout/main.styl'
+// Stylus
+import './assets/includes/main.styl'
 
 // CSS (example)
 // import './assets/css/main.css'
