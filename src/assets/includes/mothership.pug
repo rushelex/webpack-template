@@ -1,0 +1,20 @@
+block vars
+  include utils/vars.pug
+
+doctype html
+html
+  head
+    meta(charset='UTF-8')
+    title #{myTitle}
+    block metatags
+      meta(name="description" content=myDesc)
+      meta(name='viewport' content='width=device-width, initial-scale=1.0')
+      meta(http-equiv='X-UA-Compatible' content='ie=edge')
+    block links
+
+  body
+    include pug/header.pug
+    block content
+    include pug/footer.pug
+
+    block script
