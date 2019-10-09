@@ -1,2 +1,2 @@
 let ab = (a, b) => a + b
-console.log(ab(3, 3));
+console.log(ab('foo', 'ter'));

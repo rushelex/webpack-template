@@ -1,12 +1,23 @@
 @import "utils/vars"
 @import "utils/mixins"
 
-.content-wrapper
-  border: 1px solid rgb(3, 169, 244)
-  border-radius: 5px
-  background-color: rgba(3, 168, 244, 0.15)
-  margin: 10px 0
-  font-family: $mainFont
-  font-weight: 500
+.visually-hidden
+  position absolute
+  white-space nowrap
+  width 1px
+  height 1px
+  overflow hidden
+  border 0
+  padding 0
+  clip rect(0 0 0 0)
+  clip-path inset(50%)
+  margin -1px
+
+header, main, footer,
+div, article, section,
+table, tr, td,
+p, ul,
+form, input, button
+  box-sizing border-box
 
 @import "styl/*"

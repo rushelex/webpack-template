@@ -1,6 +1,6 @@
 {
   "name": "webpack-template",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "My Webpack template",
   "main": "index.js",
   "scripts": {
@@ -8,8 +8,11 @@
     "build": "webpack --config ./build/webpack.build.conf.js"
   },
   "browserslist": [
-    "> 1%",
-    "last 3 version"
+    "> 1% and last 3 versions",
+    "not dead",
+    "not OperaMini all",
+    "ie >= 11",
+    "Edge >= 12"
   ],
   "author": "Alexey Shelementev",
   "license": "MIT",
