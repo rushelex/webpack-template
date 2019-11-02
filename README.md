@@ -28,7 +28,6 @@ npm run build
 
 ## Структура проекта:
 
-* `src/assets/fonts` — шрифты
 * `src/assets/img` — изображения. Не забудьте использовать корректный путь: `/assets/img/some.jpg`
 * `src/assets/includes/js` — javascript-файлы. Не забудьте импортировать их в `main.js`
 * `src/assets/includes/pug` — pug-файлы блоков и элементов
@@ -83,26 +82,34 @@ import Bootstrap from 'bootstrap/dist/js/bootstrap.min.js'
 import 'bootstrap/dist/js/bootstrap.min.js'
 ```
 
-## Папка PUG-файлов:
+## Папка с PUG-файлами:
 #### По-умолчанию:
-* .pug директория: `./src/assets/includes/pug`
-* Конфигурация: в `./build/webpack.base.conf.js`
-**Использование:**
-Все файлы должны быть созданы в папке `./src/assets/pages/`.
-Пример:
+* Директория **страниц** *.pug: `./src/assets/pages/`
+* Директория **модулей** *.pug: `./src/assets/includes/pug/`
+* Конфигурация: `./build/webpack.base.conf.js`
+
+#### Использование:
+
+Файлы страниц должны быть созданы в папке `./src/assets/pages/`. Пример:
 ``` bash
 ./src/assets/pages/index.pug
 ./src/assets/pages/about.pug
 ```
 
-#### Изменение стандартной директории папки PUG:
-Пример для `./src/pug/mynewfolder/pages`:
-* Измените константу PAGES_DIR в `./build/webpack.base.conf.js`:
+Файлы модулей должны быть созданы в папке `./src/assets/includes/pug/`. Пример:
+``` bash
+./src/assets/insludes/pug/header.pug
+./src/assets/insludes/pug/footer.pug
+```
+
+#### Изменение стандартной директории страниц PUG:
+Пример для `./src/myNewFolder/pages`:
+1. Измените константу PAGES_DIR в `./build/webpack.base.conf.js`:
 ``` js
 // Ваш новый путь
-const PAGES_DIR = `${PATHS.src}/pug/mynewfolder/pages/`
+const PAGES_DIR = `${PATHS.src}/myNewFolder/pages/`
 ```
-3. Перезапустите dev-сервер Webpack
+2. Перезапустите dev-сервер Webpack
 
 ## Создание других PUG-файлов:
 #### По-умолчанию:
@@ -111,7 +118,7 @@ const PAGES_DIR = `${PATHS.src}/pug/mynewfolder/pages/`
 2. Откройте новую страницу `http://localhost:8081/about.html` (Не забудьте ПЕРЕЗАПУСТИТЬ dev-сервер)
 
 #### Второй метод:
-Ручное (не автоматическое) создание любых pug-страниц (не забудьте ПЕРЕЗАПУСТИТЬ dev-сервер и ЗАКОММЕНТИРОВАТЬ строки выше)
+Ручное (не автоматическое) создание любых pug-страниц (не забудьте ПЕРЕЗАПУСТИТЬ dev-сервер и ЗАКОММЕНТИРОВАТЬ строки выше):
 1. Создайте другой pug-файл в `./src/assets/pages/`
 2. Перейдите в `./build/webpack.base.conf.js`
 3. Закомментируйте строки, указанные выше (автоматическое создание pug-страниц)
@@ -144,27 +151,6 @@ const PAGES_DIR = `${PATHS.src}/pug/mynewfolder/pages/`
     })
 ```
 
-## Добавление шрифтов:
-Добавьте @font-face в `/assets/includes/utils/fonts.styl`:
-
-``` stylus
-// Пример со шрифтом Roboto
-@font-face
-  font-family "Roboto"
-  src url('/assets/fonts/Roboto/Regular/Roboto.eot') /* IE9 Compat Modes */
-  src url('/assets/fonts/Roboto/Regular/Roboto.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
-       url('/assets/fonts/Roboto/Regular/Roboto.woff') format('woff'), /* Pretty Modern Browsers */
-       url('/assets/fonts/Roboto/Regular/Roboto.woff2') format('woff2'), /* Pretty Modern Browsers */
-       url('/assets/fonts/Roboto/Regular/Roboto.ttf')  format('truetype'), /* Safari, Android, iOS */
-       url('/assets/fonts/Roboto/Regular/Roboto.svg') format('svg') /* Legacy iOS */
-```
-
-Добавьте переменные для шрифта в `/assets/includes/utils/vars.styl`:
-
-``` stylus
-$mySecondFont  =  'Roboto', Arial, sans-serif
-```
-
 
 ## Проверка работоспособности:
 #### В режиме тестирования:
@@ -174,12 +160,41 @@ npm run dev
 ```
 
 #### В режиме продакшена:
-Для проверки работы сайта запустите build-сборку командой
+Запустите build-сборку командой
 ``` bash
 npm run build
 ```
-и опубликуйте файлы из папки `/dist` на СЕРВЕРЕ!
-Если проверять сайт путём простого открытия файла index.html из папки `/dist`, то стили не будут подгружаться (это происходит из-за ключа `publicPath: '/';` в `webpack.base.conf.js`)
+
+## Использование GitHub Pages:
+В **выходных** файлах пути должны быть корректными, например:
+
+##### HTML:
+``` bash
+# было:
+<link href="/assets/css/app.3c4347857df8a099ed60.css" rel="stylesheet">
+
+# стало:
+<link href="assets/css/app.3c4347857df8a099ed60.css" rel="stylesheet">
+```
+
+##### CSS:
+``` bash
+# было:
+background-image: url(/assets/img/icon/webpack-icon.png);
+
+# стало:
+background-image: url(../../assets/img/icon/webpack-icon.png);
+```
+
+##### JS:
+``` bash
+# было:
+div.style.backgroundImage="url(/assets/img/png/ice-cream-1-interlace.png)";
+
+# стало:
+div.style.backgroundImage="url(./assets/img/png/ice-cream-1-interlace.png)";
+```
+> Из-за особенностей Webpack пути до файлов прописываются не корректно, и GitHub Pages / локальный запуск не могут их найти. При запуске на сервере эта проблема отсутствует.
 
 
 ## License

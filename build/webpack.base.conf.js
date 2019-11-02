@@ -26,8 +26,7 @@ module.exports = {
   },
   output: {
     filename: `${PATHS.assets}js/[name].[hash].js`,
-    path: PATHS.dist,
-    publicPath: '/'
+    path: PATHS.dist
   },
   module: {
     rules: [{
@@ -89,7 +88,6 @@ module.exports = {
     }),
     new CopyWebpackPlugin([
       { from: `${PATHS.src}/${PATHS.assets}img`, to: `${PATHS.assets}img` },
-      { from: `${PATHS.src}/${PATHS.assets}fonts`, to: `${PATHS.assets}fonts` },
       { from: `${PATHS.src}/static`, to: '' },
     ]),
 

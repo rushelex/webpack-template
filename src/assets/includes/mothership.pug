@@ -5,18 +5,25 @@ doctype html
 html(lang="ru")
   head
     meta(charset='UTF-8')
-    title #{myTitle}
+    title #{title}
     block metatags
       meta(name="description" content=Description)
       meta(name='viewport' content='width=device-width, initial-scale=1.0')
       meta(http-equiv='X-UA-Compatible' content='ie=edge')
     block links
+      link(href="https://fonts.googleapis.com/css?family=Roboto:400,500,700&display=swap&subset=cyrillic", rel="stylesheet")
+      link(href="https://fonts.googleapis.com/css?family=Montserrat&display=swap", rel="stylesheet")
       link(href="https://necolas.github.io/normalize.css/latest/normalize.css", rel="stylesheet")
       //- app.css подключен через Webpack
 
   body
-    include pug/header.pug
+    header.header
+      include pug/header.pug
+        if inner
+          div.header-inner
+            p Это внутренняя страница
     block content
-    include pug/footer.pug
+    footer.footer
+      include pug/footer.pug
 
     block script

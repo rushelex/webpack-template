@@ -1,9 +1,13 @@
 extends ../includes/mothership.pug
 
 append vars
-  - var myTitle = 'About'
-  - var myDesc = 'About page'
+  - var title = 'About'
+  - var description = 'About page'
+  - var inner = true
 
 block content
-  main.about
-    h1 This is page About.html
+  main#about.content
+    div.skiptarget
+      a#maincontent
+    h1.visually-hidden Контент сайта
+    p This is page About.html

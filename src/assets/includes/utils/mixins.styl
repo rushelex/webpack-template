@@ -10,6 +10,8 @@ size($width, $height = $width)
   width: $width
   height: $height
 
+
+// вставлять через +placeholder()
 placeholder()
   ::-webkit-input-placeholder
     {block}
@@ -19,3 +21,12 @@ placeholder()
     {block}
   :-ms-input-placeholder
     {block}
+
+// сброс стилей кнопок
+buttonReset()
+  padding 0
+  font inherit
+  color inherit
+  background-color transparent
+  border none
+  cursor pointer

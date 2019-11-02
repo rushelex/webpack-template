@@ -1,4 +1,10 @@
-header
-  | HEADER IS HERE
+block header
+  p HEADER IS HERE
+  div.skip#skipnav
+      p.skipnav
+        a(href="#maincontent") Перейти к контенту (Нажмите Enter)
+  div.skip#skipcontent
+      p.skipcontent
+        a(href="#footer") Перейти к подвалу (Нажмите Enter)
   a(href="./index.html") Index
   a(href="./about.html") About
