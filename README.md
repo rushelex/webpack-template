@@ -86,8 +86,10 @@ import 'bootstrap/dist/js/bootstrap.min.js'
 ## Папка PUG-файлов:
 #### По-умолчанию:
 * .pug директория: `./src/assets/includes/pug`
-* Конфигурация: в `./build/webpack.base.conf.js`
+* конфигурация в: `./build/webpack.base.conf.js`
+
 **Использование:**
+
 Все файлы должны быть созданы в папке `./src/assets/pages/`.
 Пример:
 ``` bash
@@ -96,11 +98,11 @@ import 'bootstrap/dist/js/bootstrap.min.js'
 ```
 
 #### Изменение стандартной директории папки PUG:
-Пример для `./src/pug/mynewfolder/pages`:
+Пример для `./src/pug/myNewFolder/pages`:
 * Измените константу PAGES_DIR в `./build/webpack.base.conf.js`:
 ``` js
 // Ваш новый путь
-const PAGES_DIR = `${PATHS.src}/pug/mynewfolder/pages/`
+const PAGES_DIR = `${PATHS.src}/pug/myNewFolder/pages/`
 ```
 3. Перезапустите dev-сервер Webpack
 
@@ -150,13 +152,13 @@ const PAGES_DIR = `${PATHS.src}/pug/mynewfolder/pages/`
 ``` stylus
 // Пример со шрифтом Roboto
 @font-face
-  font-family "Roboto"
-  src url('/assets/fonts/Roboto/Regular/Roboto.eot') /* IE9 Compat Modes */
-  src url('/assets/fonts/Roboto/Regular/Roboto.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
-       url('/assets/fonts/Roboto/Regular/Roboto.woff') format('woff'), /* Pretty Modern Browsers */
-       url('/assets/fonts/Roboto/Regular/Roboto.woff2') format('woff2'), /* Pretty Modern Browsers */
-       url('/assets/fonts/Roboto/Regular/Roboto.ttf')  format('truetype'), /* Safari, Android, iOS */
-       url('/assets/fonts/Roboto/Regular/Roboto.svg') format('svg') /* Legacy iOS */
+  font-family Roboto
+  src url(/assets/fonts/Roboto/Regular/Roboto.eot) /* IE9 Compat Modes */
+  src url(/assets/fonts/Roboto/Regular/Roboto.eot?#iefix) format('embedded-opentype'), /* IE6-IE8 */
+      url(/assets/fonts/Roboto/Regular/Roboto.woff) format('woff'), /* Pretty Modern Browsers */
+      url(/assets/fonts/Roboto/Regular/Roboto.woff2) format('woff2'), /* Pretty Modern Browsers */
+      url(/assets/fonts/Roboto/Regular/Roboto.ttf) format('truetype'), /* Safari, Android, iOS */
+      url(/assets/fonts/Roboto/Regular/Roboto.svg) format('svg') /* Legacy iOS */
 ```
 
 Добавьте переменные для шрифта в `/assets/includes/utils/vars.styl`:
@@ -174,12 +176,21 @@ npm run dev
 ```
 
 #### В режиме продакшена:
-Для проверки работы сайта запустите build-сборку командой
+Запустите build-сборку командой
 ``` bash
 npm run build
 ```
-и опубликуйте файлы из папки `/dist` на СЕРВЕРЕ!
-Если проверять сайт путём простого открытия файла index.html из папки `/dist`, то стили не будут подгружаться (это происходит из-за ключа `publicPath: '/';` в `webpack.base.conf.js`)
+
+### Если используете GitHub Pages:
+Если в стилях установлено фоновое изображение `background-image: url(...);` , то в выходном css-файле нужно изменить путь на **относительный**, например:
+``` scss
+было:
+background-image: url(/assets/img/icon/webpack-icon.png);
+
+стало:
+background-image: url(../../assets/img/icon/webpack-icon.png);
+```
+> CSS не поддерживает путь от корня сайта, поэтому, если сразу прописать `url(../../assets/img/icon/webpack-icon.png)`, то Webpack обрежет путь и получится `url(./webpack-icon.png)`, что не корректно. Если оставить `url(/assets/img/icon/webpack-icon.png)`, то файл так же не будет найден.
 
 
 ## License
