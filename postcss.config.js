@@ -1,15 +1,20 @@
+const AutoPrefixer = require('autoprefixer');
+const SortCssMediaQueries = require('sort-css-media-queries');
+const CssNano = require('cssnano');
+
 module.exports = {
   plugins: [
-    require('autoprefixer'),
-    require('sort-css-media-queries'),
-    require('cssnano')({
+    AutoPrefixer,
+    SortCssMediaQueries,
+    CssNano({
       preset: [
-        'default', {
+        'default',
+        {
           discardComments: {
             removeAll: true,
-          }
-        }
-      ]
-    })
-  ]
-}
+          },
+        },
+      ],
+    }),
+  ],
+};

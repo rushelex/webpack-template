@@ -1,12 +1,12 @@
 const webpack = require('webpack');
 const merge = require('webpack-merge');
-const baseWebpackConfig = require('./webpack.base.conf');
+const BaseWebpackConfig = require('./webpack.base.conf');
 
-const devWebpackConfig = merge(baseWebpackConfig, {
+const DevWebpackConfig = merge(BaseWebpackConfig, {
   mode: 'development',
   devtool: 'cheap-module-eval-source-map',
   devServer: {
-    contentBase: baseWebpackConfig.externals.paths.dist,
+    contentBase: BaseWebpackConfig.externals.paths.dist,
     port: 8081,
     overlay: {
       warnings: true,
@@ -20,6 +20,6 @@ const devWebpackConfig = merge(baseWebpackConfig, {
   ],
 });
 
-module.exports = new Promise((resolve) => {
-  resolve(devWebpackConfig);
+module.exports = new Promise(resolve => {
+  resolve(DevWebpackConfig);
 });
