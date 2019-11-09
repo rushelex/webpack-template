@@ -1,2 +1,2 @@
-// import "./js/header.js"
-// import "./js/footer.js"
+import './js/header';
+import './js/footer';

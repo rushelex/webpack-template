@@ -1,2 +1,2 @@
-let ab = (a, b) => a + b
-console.log(ab('foo', 'ter'));
+const ab = (a, b) => a + b;
+console.log(ab('Foo', 'Ter'));
